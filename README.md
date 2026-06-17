@@ -31,11 +31,13 @@ How do renewable energy consumption and other emission-related factors (CO₂ in
 **Advanced Models**
 - Random Forest Regressor ✅ (Best Model)
 - Gradient Boosting
+- Artificial Neural Network (ANN) — explored as a deep learning comparison model
 
 ## ⚙️ Model Optimization
 - Hyperparameter tuning using GridSearchCV
 - Cross-validation (5-fold) for model stability
 - Best parameters: `n_estimators=200`, `max_depth=None`, `min_samples_split=2`, `min_samples_leaf=1`
+- Average 5-fold CV R²: 0.97
 
 ## 📈 Results & Evaluation
 | Model | R² Score | MAE | RMSE |
@@ -43,8 +45,10 @@ How do renewable energy consumption and other emission-related factors (CO₂ in
 | Linear Regression | 0.568 | 9.22 | 40.79 |
 | **Random Forest ✅** | **0.998** | **0.64** | **2.04** |
 | Gradient Boosting | 0.997 | 2.01 | 3.26 |
+| ANN (before tuning) | -0.006 | 10.95 | 62.28 |
+| ANN (after tuning) | 0.159 | 12.24 | 56.93 |
 
-👉 Random Forest performed best with the highest accuracy and lowest error.
+👉 Random Forest performed best with the highest accuracy and lowest error. Despite being a deep learning approach, ANN underperformed compared to ensemble tree-based models — even after hyperparameter tuning, its R² remained low. This shows that for this structured tabular dataset, ensemble methods like Random Forest generalize better than neural networks.
 
 ## 📊 Key Insights
 - Renewable energy has a negative but weak correlation with CO₂ emissions
@@ -122,7 +126,7 @@ Renewable energy alone cannot significantly reduce emissions. Multiple environme
 
 ## 🔮 Future Work
 - Include more features like population and industrial data
-- Try deep learning models with larger datasets
+- Improve ANN architecture (more layers, regularization) to see if deep learning performance can be improved further
 - Cloud deployment of both apps
 - Real-time data integration
 
